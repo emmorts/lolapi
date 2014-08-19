@@ -1,0 +1,30 @@
+{
+  "name": "lolapi",
+  "version": "0.0.0",
+  "description": "lolapi ======",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "gulp": "^3.8.7"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emmorts/lolapi.git"
+  },
+  "keywords": [
+    "league",
+    "lol",
+    "api",
+    "wrapper"
+  ],
+  "author": "Tomas Stropus",
+  "license": "GNUv2",
+  "bugs": {
+    "url": "https://github.com/emmorts/lolapi/issues"
+  },
+  "homepage": "https://github.com/emmorts/lolapi"
+}
