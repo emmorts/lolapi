@@ -6,7 +6,7 @@ Wrapper of the official League of Legends public API.
 
 Installation
 -----------
-Install this package by running `npm install lolapi`.
+~~Install this package by running `npm install lolapi`.~~ Unpublished to NPM yet.
 
 Quick Start
 -----------
@@ -20,7 +20,8 @@ lolapi.Game.getBySummonerId(71054, {}, function (error, results) {
 
 API
 ---
-Every API call has an argument `options` which may be left `null` if desired. `options` property `region` may be used in every call to define the region; if it's left empty, region from the constructor will be used; if that is not defined either, region will default to `Europe West`. Most of the API have additional available properties covered below.
+Every API call has an argument `options` which may be left `null` if desired. `options` property `region` may be used in every call to define the region; if it's left empty, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API have additional available properties covered below.
+Callbacks will always be given error as the first argument and results as the second one.
 
 ### setRateLimit(limitPer10s, limitPer10min)
 Sets a request limit. When either limit is reached, the request will be queued and ran as soon as possible.
@@ -31,7 +32,7 @@ Gets a champion by its ID.
 ### Champion.getAll(options, callback);
 Gets all champions.
 
-`options` may contain `freeToPlay` attribute. If that is set to true, it will only return champions that are free to play.
+`options` may contain *freeToPlay* property. If that is set to true, it will only return champions that are free to play.
 
 Example:
 ```Javascript
