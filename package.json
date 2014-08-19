@@ -1,8 +1,8 @@
 {
   "name": "lolapi",
   "version": "0.0.0",
-  "description": "lolapi ======",
-  "main": "index.js",
+  "description": "Wrapper of the official League of Legends public API",
+  "main": "lib/lolapi.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "^1.9.1",

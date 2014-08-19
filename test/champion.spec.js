@@ -16,7 +16,7 @@ describe('#champion', function () {
       expect(result.champions).to.be.ok;
       expect(result.champions.length).to.be.at.least(10);
       done();
-    })
+    });
   });
 
   it('should return all free to play champions', function (done) {
@@ -26,7 +26,7 @@ describe('#champion', function () {
       expect(result.champions).to.be.ok;
       expect(result.champions).to.have.length(10);
       done();
-    })
+    });
   });
 
   it('should return one champion', function (done) {
@@ -37,7 +37,7 @@ describe('#champion', function () {
       expect(result).to.be.ok;
       expect(result).to.be.an('object');
       done();
-    })
+    });
   });
 
 });
