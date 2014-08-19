@@ -5,11 +5,10 @@
   "main": "lib/lolapi.js",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^1.9.1",
-    "gulp": "^3.8.7"
+    "chai": "^1.9.1"
   },
   "scripts": {
-    "test": "gulp"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
