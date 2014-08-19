@@ -5,10 +5,6 @@ var expect = require('chai').expect;
 describe('#champion', function () {
   'use strict';
 
-  it('should throw an exception with invalid parameters', function () {
-    expect(api.Champion.getAll).to.throw(Error);
-  });
-
   it('should return all champions', function (done) {
     api.Champion.getAll({}, function (error, result) {
       expect(error).to.not.be.ok;

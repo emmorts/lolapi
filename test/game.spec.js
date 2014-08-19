@@ -5,10 +5,6 @@ var expect = require('chai').expect;
 describe('#game', function () {
   'use strict';
 
-  it('should throw an exception with invalid parameters', function () {
-    expect(api.Game.getBySummonerId).to.throw(Error);
-  });
-
   it('should return a collection of ten recent games', function (done) {
     var summonerId = 71054;
 
