@@ -20,16 +20,18 @@ lolapi.Game.getBySummonerId(71054, {}, function (error, results) {
 
 API
 ---
-Every API call has an argument `options` which may be left `null` if desired. `options` property `region` may be used in every call to define the region; if it's left empty, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API have additional available properties covered below.
-Callbacks will always be given error as the first argument and results as the second one.
+Callbacks will always be given an error object as the first argument and a result object as the second one.
+
+Every API call has an argument `options` with optional properties.
+Property `region` may be used in every call to define the region; if it's left empty, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API have additional available properties covered below.
 
 ### setRateLimit(limitPer10s, limitPer10min)
 Sets a request limit. When either limit is reached, the request will be queued and ran as soon as possible.
 
-### Champion.get(championId, options, callback);
+### Champion.get(championId, options, callback)
 Gets a champion by its ID.
 
-### Champion.getAll(options, callback);
+### Champion.getAll(options, callback)
 Gets all champions.
 
 `options` may contain *freeToPlay* property. If that is set to true, it will only return champions that are free to play.
