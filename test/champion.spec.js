@@ -6,6 +6,14 @@ describe('api', function () {
 
   describe('#champion', function () {
 
+    it('should return an error', function (done) {
+      api.Champion.get('invalid id', {}, function (error, result) {
+        expect(error).to.be.ok;
+        expect(result).to.not.be.ok;
+        done();
+      });
+    });
+
     it('should return all champions', function (done) {
       api.Champion.getAll({}, function (error, result) {
         expect(error).to.not.be.ok;

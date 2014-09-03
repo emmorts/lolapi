@@ -6,7 +6,7 @@ Wrapper of the official League of Legends public API.
 
 Installation
 -----------
-~~Install this package by running `npm install lolapi`.~~ Unpublished to NPM yet.
+Install this package by running `npm install lolapi`.
 
 Quick Start
 -----------
