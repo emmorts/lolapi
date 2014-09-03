@@ -5,10 +5,9 @@ var expect = require('chai').expect;
 describe('api', function () {
 
   describe('#match', function () {
+    var matchId = 1649939259;
 
     it('should return a match', function (done) {
-      var matchId = 1649939259;
-
       api.Match.get(matchId, {}, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
@@ -21,8 +20,6 @@ describe('api', function () {
     });
 
     it('should return a match with timeline', function (done) {
-      var matchId = 1649939259;
-
       api.Match.get(matchId, { includeTimeline: true }, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
