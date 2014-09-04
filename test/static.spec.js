@@ -5,6 +5,11 @@ var expect = require('chai').expect;
 describe('api', function () {
 
   describe('#static', function () {
+    var champion = {
+       id: 412,
+       title: 'the Chain Warden',
+       name: 'Thresh'
+    };
 
     it('should return a champion list', function (done) {
       api.Static.getChampions(function (error, result) {
@@ -17,19 +22,30 @@ describe('api', function () {
     });
 
     it('should return champion \'Thresh\'', function (done) {
-      var thresh = {
-         id: 412,
-         title: 'the Chain Warden',
-         name: 'Thresh'
-      };
-
-      api.Static.getChampion(thresh.id, function (error, result) {
+      api.Static.getChampion(champion.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
-        expect(result.id).to.equal(thresh.id);
-        expect(result.title).to.equal(thresh.title);
-        expect(result.name).to.equal(thresh.name);
+        expect(result.id).to.equal(champion.id);
+        expect(result.title).to.equal(champion.title);
+        expect(result.name).to.equal(champion.name);
+        done();
+      });
+    });
+
+    it('should return champion stats', function (done) {
+      var options = {
+        champData: 'stats'
+      };
+
+      api.Static.getChampion(champion.id, options, function (error, result) {
+        expect(error).to.not.be.ok;
+        expect(result).to.be.ok;
+        expect(result).to.be.an('object');
+        expect(result).to.be.ok;
+        expect(result.id).to.equal(champion.id);
+        expect(result.name).to.equal(champion.name);
+        expect(result.stats).to.be.ok;
         done();
       });
     });

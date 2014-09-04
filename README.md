@@ -12,8 +12,25 @@ Quick Start
 ```Javascript
 var lolapi = require('lolapi')('my-api-key', 'euw');
 
-lolapi.Game.getBySummonerId(71054, function (error, results) {
-  // do something with recent games of the summoner
+lolapi.setRateLimit(10, 500);
+
+var summonerName = 'wickd';
+lolapi.Summoner.getByName(summonerName, function (error, summoner) {
+  if (error) throw error;
+  /* summoner object
+  { wickd:
+    {
+      id: 71500,
+      name: 'Wickd',
+      profileIconId: 613,
+      summonerLevel: 30,
+      revisionDate: 1408199475000
+    }
+  } */
+  lolapi.Summoner.getRunes(summoner[summonerName].id, function (error, runes) {
+    if (error) throw error;
+    // do something with runes
+  })
 });
 ```
 
@@ -47,8 +64,8 @@ Property `region` may be added to `options` in order to define the region; if it
 - [Static.getSummonerSpell(summonerSpellId, [options, ]callback)](#staticgetsummonerspellsummonerspellid-options-callback)
 - [Static.getRealm([options, ]callback)](#staticgetrealmoptions-callback)
 - [Static.getVersions([options, ]callback)](#staticgetversionsoptions-callback)
-- [Static.getRanked([options, ]callback)](#staticgetrankedoptions-callback)
-- [Static.getSummary([options, ]callback)](#staticgetsummaryoptions-callback)
+- [Stats.getRanked([options, ]callback)](#statsgetrankedoptions-callback)
+- [Stats.getSummary([options, ]callback)](#statsgetsummaryoptions-callback)
 - [Summoner.get(summonerIds, [options, ]callback)](#summonergetsummonerids-options-callback)
 - [Summoner.getByName(summonerNames, [options, ]callback)](#summonergetbynamesummonernames-options-callback)
 - [Summoner.getName(summonerIds, [options, ]callback)](#summonergetnamesummonerids-options-callback)
@@ -215,13 +232,13 @@ Get realm data.
 #### Static.getVersions([options, ]callback)
 Get versions data.
 
-#### Static.getRanked([options, ]callback)
+#### Stats.getRanked([options, ]callback)
 Get ranked stats by summoner ID.
 
 Additional `options` properties:
 - **season** - name of the season you want to retrieve stats of(eg. *SEASON3* or *SEASON4*)
 
-#### Static.getSummary([options, ]callback)
+#### Stats.getSummary([options, ]callback)
 Get player stats summaries by summoner ID.
 
 Additional `options` properties:
