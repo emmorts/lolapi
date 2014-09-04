@@ -8,7 +8,7 @@ describe('api', function () {
     var matchId = 1649939259;
 
     it('should return a match', function (done) {
-      api.Match.get(matchId, {}, function (error, result) {
+      api.Match.get(matchId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

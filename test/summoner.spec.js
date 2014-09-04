@@ -8,8 +8,33 @@ describe('api', function () {
     var summonerNames = ['wickd', 'froggen'];
     var summonerIds = [71500, 19531813];
 
+    it('should retrieve summoner by id', function (done) {
+      api.Summoner.get(summonerIds[0], function (error, result) {
+        expect(error).to.not.be.ok;
+        expect(result).to.be.ok;
+        expect(result).to.be.an('object');
+        expect(result[summonerIds[0]]).to.be.ok;
+        expect(result[summonerIds[0]]).to.be.an('object');
+        expect(result[summonerIds[0]].name.toLowerCase()).to.equal(summonerNames[0]);
+        done();
+      });
+    });
+
+    it('should retrieve multiple summoners by id', function (done) {
+      api.Summoner.get(summonerIds, function (error, result) {
+        expect(error).to.not.be.ok;
+        expect(result).to.be.ok;
+        expect(result).to.be.an('object');
+        expect(result[summonerIds[0]]).to.be.ok;
+        expect(result[summonerIds[1]]).to.be.ok;
+        expect(summonerNames).to.include(result[summonerIds[0]].name.toLowerCase());
+        expect(summonerNames).to.include(result[summonerIds[1]].name.toLowerCase());
+        done();
+      });
+    });
+
     it('should retrieve summoner by name', function (done) {
-      api.Summoner.getByName(summonerNames[0], {}, function (error, result) {
+      api.Summoner.getByName(summonerNames[0], function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -21,7 +46,7 @@ describe('api', function () {
     });
 
     it('should retrieve multiple summoners by name', function (done) {
-      api.Summoner.getByName(summonerNames, {}, function (error, result) {
+      api.Summoner.getByName(summonerNames, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -36,7 +61,7 @@ describe('api', function () {
     });
 
     it('should retrieve summoners name', function (done) {
-      api.Summoner.getName(summonerIds[0], {}, function (error, result) {
+      api.Summoner.getName(summonerIds[0], function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -46,7 +71,7 @@ describe('api', function () {
     });
 
     it('should retrieve multiple summoners names', function (done) {
-      api.Summoner.getName(summonerIds, {}, function (error, result) {
+      api.Summoner.getName(summonerIds, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -59,7 +84,7 @@ describe('api', function () {
     });
 
     it('should retrieve summoners runes', function (done) {
-      api.Summoner.getRunes(summonerIds[0], {}, function (error, result) {
+      api.Summoner.getRunes(summonerIds[0], function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -71,7 +96,7 @@ describe('api', function () {
     });
 
     it('should retrieve multiple summoners runes', function (done) {
-      api.Summoner.getRunes(summonerIds, {}, function (error, result) {
+      api.Summoner.getRunes(summonerIds, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -84,7 +109,7 @@ describe('api', function () {
     });
 
     it('should retrieve summoners masteries', function (done) {
-      api.Summoner.getMasteries(summonerIds[0], {}, function (error, result) {
+      api.Summoner.getMasteries(summonerIds[0], function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -96,7 +121,7 @@ describe('api', function () {
     });
 
     it('should retrieve multiple summoners masteries', function (done) {
-      api.Summoner.getMasteries(summonerIds, {}, function (error, result) {
+      api.Summoner.getMasteries(summonerIds, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

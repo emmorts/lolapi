@@ -12,7 +12,7 @@ describe('api', function () {
     var endIndex = 5;
 
     it('should return match history of a summoner', function (done) {
-      api.MatchHistory.getBySummonerId(summonerId, {}, function (error, result) {
+      api.MatchHistory.getBySummonerId(summonerId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

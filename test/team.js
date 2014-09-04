@@ -8,7 +8,7 @@ describe('api', function () {
     var summonerIds = [71500, 19531813];
 
     it('should retrieve summoners teams', function (done) {
-      api.Team.getBySummonerId(summonerIds[0], {}, function (error, result) {
+      api.Team.getBySummonerId(summonerIds[0], function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -18,7 +18,7 @@ describe('api', function () {
     });
 
     it('should retrieve multiple summoners teams', function (done) {
-      api.Team.getBySummonerId(summonerIds, {}, function (error, result) {
+      api.Team.getBySummonerId(summonerIds, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

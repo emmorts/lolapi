@@ -7,7 +7,7 @@ describe('api', function () {
   describe('#static', function () {
 
     it('should return a champion list', function (done) {
-      api.Static.getChampions({}, function (error, result) {
+      api.Static.getChampions(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -23,7 +23,7 @@ describe('api', function () {
          name: 'Thresh'
       };
 
-      api.Static.getChampion(thresh.id, {}, function (error, result) {
+      api.Static.getChampion(thresh.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -35,7 +35,7 @@ describe('api', function () {
     });
 
     it('should return an item list', function (done) {
-      api.Static.getItems({}, function (error, result) {
+      api.Static.getItems(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -50,7 +50,7 @@ describe('api', function () {
          name: 'Dagger'
       }
 
-      api.Static.getItem(dagger.id, {}, function (error, result) {
+      api.Static.getItem(dagger.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -61,7 +61,7 @@ describe('api', function () {
     });
 
     it('should return a list of masteries', function (done) {
-      api.Static.getMasteries({}, function (error, result) {
+      api.Static.getMasteries(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -76,7 +76,7 @@ describe('api', function () {
         name: 'Feast'
       };
 
-      api.Static.getMastery(feast.id, {}, function (error, result) {
+      api.Static.getMastery(feast.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -87,7 +87,7 @@ describe('api', function () {
     });
 
     it('should return a list of runes', function (done) {
-      api.Static.getRunes({}, function (error, result) {
+      api.Static.getRunes(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -102,7 +102,7 @@ describe('api', function () {
         'name': 'Quintessence of Ability Power'
       };
 
-      api.Static.getRune(apQuint.id, {}, function (error, result) {
+      api.Static.getRune(apQuint.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -113,7 +113,7 @@ describe('api', function () {
     });
 
     it('should return a list of summoner spells', function (done) {
-      api.Static.getSummonerSpells({}, function (error, result) {
+      api.Static.getSummonerSpells(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -128,7 +128,7 @@ describe('api', function () {
          name: 'Heal'
       };
 
-      api.Static.getSummonerSpell(heal.id, {}, function (error, result) {
+      api.Static.getSummonerSpell(heal.id, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -139,7 +139,7 @@ describe('api', function () {
     });
 
     it('should return version data', function (done) {
-      api.Static.getVersions({}, function (error, result) {
+      api.Static.getVersions(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result.length).to.be.at.least(10);
@@ -148,7 +148,7 @@ describe('api', function () {
     });
 
     it('should return realm data', function (done) {
-      api.Static.getRealm({}, function (error, result) {
+      api.Static.getRealm(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

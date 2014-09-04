@@ -7,7 +7,7 @@ describe('api', function () {
   describe('#champion', function () {
 
     it('should return an error', function (done) {
-      api.Champion.get('invalid id', {}, function (error, result) {
+      api.Champion.get('invalid id', function (error, result) {
         expect(error).to.be.ok;
         expect(result).to.not.be.ok;
         done();
@@ -15,7 +15,7 @@ describe('api', function () {
     });
 
     it('should return all champions', function (done) {
-      api.Champion.getAll({}, function (error, result) {
+      api.Champion.getAll(function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result.champions).to.be.ok;
@@ -37,7 +37,7 @@ describe('api', function () {
     it('should return one champion', function (done) {
       var championId = 10;
 
-      api.Champion.get(championId, {}, function (error, result) {
+      api.Champion.get(championId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

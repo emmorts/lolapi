@@ -8,7 +8,7 @@ describe('api', function () {
     var summonerId = 71054;
 
     it('should return summoners ranked stats', function (done) {
-      api.Stats.getRanked(summonerId, {}, function (error, result) {
+      api.Stats.getRanked(summonerId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -19,7 +19,7 @@ describe('api', function () {
     });
 
     it('should return summoners stat summary', function (done) {
-      api.Stats.getSummary(summonerId, {}, function (error, result) {
+      api.Stats.getSummary(summonerId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
