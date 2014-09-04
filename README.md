@@ -22,7 +22,7 @@ API
 API callbacks follow default Node.JS pattern returning error object as the first argument and result as the second one.
 
 Every API call has an optional argument `options`.
-Property `region` may be added to `options` to be used in every call in order to define the region; if it's left empty, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API calls have additional available properties covered below.
+Property `region` may be added to `options` in order to define the region; if it's not set, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API calls have additional available properties covered below.
 
 - [setRateLimit(limitPer10s, limitPer10min)](#setratelimitlimitper10s-limitper10min)
 - [Champion.get(championId, [options, ]callback)](#championgetchampionid-options-callback)
@@ -106,7 +106,7 @@ Additional `options` properties:
 - **includeTimeline** - if true, will include timeline of the match in the results
 
 #### MatchHistory.getBySummonerId(summonerIds, [options, ]callback)
-Get match history by summoner ID.
+Get match history by summoner ID or array of summoner IDs.
 
 Additional `options` properties:
 - **championIds** - array of champion IDs you want to see in resulting matches
@@ -122,7 +122,7 @@ var options = {
   beginIndex: 0,
   endIndex: 10
 }; // these options will return 10 ranked 5v5 games containing champion Thresh
-lolapi.MatchHistory.getBySummonerId([71500, 19531813], options, function (error, matches) {
+lolapi.MatchHistory.getBySummonerId(71500, options, function (error, matches) {
   // got the matches!
 });
 ```
