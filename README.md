@@ -41,6 +41,7 @@ API callbacks follow default Node.JS pattern returning error object as the first
 Every API call has an optional argument `options`.
 Property `region` may be added to `options` in order to define the region; if it's not set, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API calls have additional available properties covered below.
 
+- [Constructor(apiKey[, region, options])](#constructorapikey-region-options)
 - [setRateLimit(limitPer10s, limitPer10min)](#setratelimitlimitper10s-limitper10min)
 - [Champion.get(championId, [options, ]callback)](#championgetchampionid-options-callback)
 - [Champion.getAll([options, ]callback)](#championgetalloptions-callback)
@@ -74,6 +75,15 @@ Property `region` may be added to `options` in order to define the region; if it
 - [Team.get(teamId, [options, ]callback)](#teamgetteamid-options-callback)
 - [Team.getBySummonerId(summonerId, [options, ]callback)](#teamgetbysummoneridsummonerid-options-callback)
 
+
+### Constructor(apiKey[, region, options])
+Constructor of the main singleton.
+
+Additional `options` properties:
+- **useCache** - a flag indicating if Redis cache database should be used(false by default). Please note, that in order to use cache, you must have redis server running on your computer
+- **port** - port Redis server is running on
+- **hostname** - hostname Redis server is running on
+- **cacheTTL** - sets a timeout on cached data in minutes(an hour by default)
 
 #### setRateLimit(limitPer10s, limitPer10min)
 Sets a request limit. When either limit is reached, subsequent requests will be queued and ran when possible.
