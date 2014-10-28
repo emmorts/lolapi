@@ -81,9 +81,17 @@ Constructor of the main singleton.
 
 Additional `options` properties:
 - **useRedis** - a flag indicating if Redis cache database should be used(false by default). Please note, that in order to use cache, you must have redis server running on your computer
-- **port** - port Redis server is running on
-- **hostname** - hostname Redis server is running on
+- **port** - port Redis server is running on(if unspecified, default 6379 will be used)
+- **hostname** - hostname Redis server is running on(if unspecified, default 127.0.0.1 will be used)
 - **cacheTTL** - sets a timeout on cached data in minutes(an hour by default)
+
+```Javascript
+var lolapi = require('lolapi')('my-api-key', 'euw', { useCache: true, cacheTTL: 7200 });
+// all requests are now being cached with a timeout of 2 hours
+var summonerName = 'wickd';
+lolapi.Summoner.getByName(summonerName, function () {}); // will take 1~ second
+lolapi.Summoner.getByName(summonerName, function () {}); // will now take 1-5 ms
+```
 
 #### setRateLimit(limitPer10s, limitPer10min)
 Sets a request limit. When either limit is reached, subsequent requests will be queued and ran when possible.
