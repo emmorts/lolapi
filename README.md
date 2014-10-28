@@ -86,7 +86,7 @@ Additional `options` properties:
 - **cacheTTL** - sets a timeout on cached data in minutes(an hour by default)
 
 ```Javascript
-var lolapi = require('lolapi')('my-api-key', 'euw', { useCache: true, cacheTTL: 7200 });
+var lolapi = require('lolapi')('my-api-key', 'euw', { useRedis: true, cacheTTL: 7200 });
 // all requests are now being cached with a timeout of 2 hours
 var summonerName = 'wickd';
 lolapi.Summoner.getByName(summonerName, function () {}); // will take 1~ second
