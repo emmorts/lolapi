@@ -80,7 +80,7 @@ Property `region` may be added to `options` in order to define the region; if it
 Constructor of the main singleton.
 
 Additional `options` properties:
-- **useCache** - a flag indicating if Redis cache database should be used(false by default). Please note, that in order to use cache, you must have redis server running on your computer
+- **useRedis** - a flag indicating if Redis cache database should be used(false by default). Please note, that in order to use cache, you must have redis server running on your computer
 - **port** - port Redis server is running on
 - **hostname** - hostname Redis server is running on
 - **cacheTTL** - sets a timeout on cached data in minutes(an hour by default)

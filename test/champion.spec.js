@@ -1,5 +1,5 @@
 var config = require('./config');
-var api = require('../lib/lolapi')(config.apiKey);
+var api = require('../lib/lolapi')(config.apiKey, 'euw');
 var expect = require('chai').expect;
 
 describe('api', function () {
