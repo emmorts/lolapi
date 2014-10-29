@@ -1,7 +1,7 @@
 lolapi
 ======
 
-Wrapper of the official League of Legends public API.
+Wrapper of the official League of Legends public API with cache support.
 
 Installation
 -----------
@@ -27,7 +27,8 @@ lolapi.Summoner.getByName(summonerName, function (error, summoner) {
       revisionDate: 1408199475000
     }
   } */
-  lolapi.Summoner.getRunes(summoner[summonerName].id, function (error, runes) {
+  var summonerId = summoner[summonerName].id;
+  lolapi.Summoner.getRunes(summonerId, function (error, runes) {
     if (error) throw error;
     // do something with runes
   })
@@ -38,8 +39,11 @@ API
 ---
 API callbacks follow default Node.JS pattern returning error object as the first argument and result as the second one.
 
-Every API call has an optional argument `options`.
-Property `region` may be added to `options` in order to define the region; if it's not set, region from the constructor will be used; if that is not defined either, region will default to *Europe West*. Most of the API calls have additional available properties covered below.
+Every API call has an optional argument `options` with following available properties:
+- **region** may be added in order to define the region; if it's not set, region from the constructor will be used; if that is not defined either, region will default to *Europe West*
+- **cacheRequest** a flag indicating if specific request should be cached(note that you must have redis server running in order for this to work)
+
+Most of the API calls have additional available properties covered below.
 
 - [Constructor(apiKey[, region, options])](#constructorapikey-region-options)
 - [setRateLimit(limitPer10s, limitPer10min)](#setratelimitlimitper10s-limitper10min)
@@ -83,14 +87,31 @@ Additional `options` properties:
 - **useRedis** - a flag indicating if Redis cache database should be used(false by default). Please note, that in order to use cache, you must have redis server running on your computer
 - **port** - port Redis server is running on(if unspecified, default 6379 will be used)
 - **hostname** - hostname Redis server is running on(if unspecified, default 127.0.0.1 will be used)
-- **cacheTTL** - sets a timeout on cached data in minutes(an hour by default)
+- **cacheTTL** - sets a timeout on cached data in seconds(an hour by default)
 
+Simple initialization:
 ```Javascript
-var lolapi = require('lolapi')('my-api-key', 'euw', { useRedis: true, cacheTTL: 7200 });
+var lolapi = require('lolapi')('my-api-key');
+// ready to go!
+```
+
+A more advanced example:
+```Javascript
+var options = {
+  useRedis: true,
+  hostname: '127.0.0.1',
+  port: 6379,
+  cacheTTL: 7200
+};
+var lolapi = require('lolapi')('my-api-key', 'euw', options);
 // all requests are now being cached with a timeout of 2 hours
 var summonerName = 'wickd';
-lolapi.Summoner.getByName(summonerName, function () {}); // will take 1~ second
-lolapi.Summoner.getByName(summonerName, function () {}); // will now take 1-5 ms
+lolapi.Summoner.getByName(summonerName, function () {
+  // will take 500ms~
+});
+lolapi.Summoner.getByName(summonerName, function () {
+  // will now take 1-5 ms
+});
 ```
 
 #### setRateLimit(limitPer10s, limitPer10min)

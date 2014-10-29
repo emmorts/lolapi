@@ -1,6 +1,6 @@
 {
   "name": "lolapi",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Wrapper of the official League of Legends public API",
   "main": "lib/lolapi.js",
   "dependencies": {
