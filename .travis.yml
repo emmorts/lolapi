@@ -1,7 +1,9 @@
 language: node_js
-script: mocha -t 5
 node_js:
 - '0.10'
+before_install: npm install -g mocha
+before_script: npm install
+script: mocha -t 5
 env:
   global:
     secure: eglPZw7bJWrAQ+pcU5Y8QFhlwcFc5zcVlhqoUNSPX/IQyfy5FUaY4J854WaZ3kMxwnfnHkh/HGrkAN2X5CA1KnxT4l5b5FoSH7hsmtKvBMFPxCM9QpF7ob4Sq1ZrMDwzHPMpWXpCfcnY5BJgPM8BlK531cv/u0JWc097xqyzyKg=
