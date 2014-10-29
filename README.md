@@ -3,6 +3,8 @@ lolapi
 
 Wrapper of the official League of Legends public API with cache support.
 
+[![Build Status](https://travis-ci.org/emmorts/lolapi.svg?branch=master)](https://travis-ci.org/emmorts/lolapi)
+
 Installation
 -----------
 Install this package by running `npm install lolapi`.
@@ -282,6 +284,12 @@ Get player stats summaries by summoner ID.
 
 Additional `options` properties:
 - **season** - name of the season you want to retrieve stats of(eg. *SEASON3* or *SEASON4*)
+
+#### Status.get(region, [options, ]callback)
+Get specific shard status by region.
+
+#### Status.getAll([options, ]callback)
+Get shard list.
 
 #### Summoner.get(summonerIds, [options, ]callback)
 Get summoner by ID or list of summoner IDs.

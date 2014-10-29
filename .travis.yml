@@ -3,6 +3,7 @@ node_js:
 - '0.10'
 before_install: npm install -g mocha
 before_script: npm install
+after_success: npm publish
 script: mocha -t 5000
 env:
   global:
