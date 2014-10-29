@@ -2,5 +2,4 @@ node_modules
 *.sublime-project
 *.sublime-workspace
 *.log
-test/config.js
 *.todo
