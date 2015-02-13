@@ -5,7 +5,7 @@ var expect = require('chai').expect;
 describe('api', function () {
 
   describe('#stats', function () {
-    var summonerId = 71054;
+    var summonerId = 24643089;
 
     it('should return summoners ranked stats', function (done) {
       api.Stats.getRanked(summonerId, function (error, result) {

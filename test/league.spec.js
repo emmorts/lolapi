@@ -6,7 +6,7 @@ describe('api', function () {
 
   describe('#league', function () {
 
-    var summonerIds = ['71054', '71500'];
+    var summonerIds = ['24643089', '19671824'];
 
     it('should return a leagues of summoner', function (done) {
       var summonerId = summonerIds[0];
