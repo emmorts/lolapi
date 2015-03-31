@@ -29,7 +29,7 @@ describe('api', function () {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result.champions).to.be.ok;
-        expect(result.champions).to.have.length(10);
+        expect(result.champions.length).to.be.at.least(10);
         done();
       });
     });
