@@ -137,10 +137,10 @@ lolapi.Champion.getAll({ freeToPlay: true }, function (error, champion) {
 });
 ```
 
-### CurrentGame.getBySummonerId(summonerId, [options, ]callback)
+#### CurrentGame.getBySummonerId(summonerId, [options, ]callback)
 Get data about game currently in progress.
 
-### FeaturedGames.get([options, ]callback)
+#### FeaturedGames.get([options, ]callback)
 Get featured games(for [Riot Games API Challenge](https://developer.riotgames.com/discussion/riot-games-api/show/bX8Z86bm)).
 
 #### Game.getBySummonerId(summonerId, [options, ]callback)
