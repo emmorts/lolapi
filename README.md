@@ -49,6 +49,7 @@ Most of the API calls have additional available properties covered below.
 
 - [Constructor(apiKey[, region, options])](#constructorapikey-region-options)
 - [setRateLimit(limitPer10s, limitPer10min)](#setratelimitlimitper10s-limitper10min)
+- [ApiChallenge.get(timestamp, [options, ]callback)](#apichallengegettimestamp-options-callback)
 - [Champion.get(championId, [options, ]callback)](#championgetchampionid-options-callback)
 - [Champion.getAll([options, ]callback)](#championgetalloptions-callback)
 - [CurrentGame.getBySummonerId(summonerId, [options, ]callback)](#currentgamegetbysummoneridsummonerid-options-callback)
@@ -121,6 +122,9 @@ lolapi.Summoner.getByName(summonerName, function () {
 #### setRateLimit(limitPer10s, limitPer10min)
 Sets a request limit. When either limit is reached, subsequent requests will be queued and ran when possible.
 
+#### ApiChallenge.get(timestamp, [options, ]callback)
+Get a list of 5 match IDs since **timestamp**.
+
 #### Champion.get(championId, [options, ]callback)
 Retrieves a champion by its ID.
 
@@ -141,7 +145,7 @@ lolapi.Champion.getAll({ freeToPlay: true }, function (error, champion) {
 Get data about game currently in progress.
 
 #### FeaturedGames.get([options, ]callback)
-Get featured games(for [Riot Games API Challenge](https://developer.riotgames.com/discussion/riot-games-api/show/bX8Z86bm)).
+Get featured games.
 
 #### Game.getBySummonerId(summonerId, [options, ]callback)
 Get recent games by summoner ID.
