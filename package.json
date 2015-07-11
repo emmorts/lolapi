@@ -10,7 +10,7 @@
     "chai": "^1.9.1"
   },
   "scripts": {
-    "test": "mocha -t 15000"
+    "test": "mocha -t 20000"
   },
   "repository": {
     "type": "git",
