@@ -1,6 +1,6 @@
 {
   "name": "lolapi",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Wrapper of the official League of Legends public API",
   "main": "lib/lolapi.js",
   "dependencies": {
@@ -10,7 +10,7 @@
     "chai": "^1.9.1"
   },
   "scripts": {
-    "test": "mocha -t 5000"
+    "test": "mocha -t 15000"
   },
   "repository": {
     "type": "git",

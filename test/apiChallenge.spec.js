@@ -1,12 +1,11 @@
-var config = require('./config');
-var api = require('../lib/lolapi')(config.apiKey);
+var api = require('./api');
 var expect = require('chai').expect;
 
 describe('api', function () {
 
   describe('#apiChallenge', function () {
 
-    it('should return a list of urf match ids', function (done) {
+    xit('should return a list of urf match ids', function (done) {
       var date = new Date();
       date.setMilliseconds(0);
       date.setSeconds(0);
