@@ -22,6 +22,7 @@
     "api",
     "wrapper"
   ],
+  "tonicExampleFilename": "./tonicExample.js",
   "author": "Tomas Stropus",
   "license": "GPL-2.0",
   "bugs": {
