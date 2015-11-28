@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 
 describe('api', function () {
 
-  describe('#matchHistory', function () {
+  describe('#matchList', function () {
     var summonerId = 71054;
     var championIds = [412, 18];
     var rankedQueues = ['RANKED_SOLO_5x5', 'RANKED_TEAM_3x3'];
@@ -11,7 +11,7 @@ describe('api', function () {
     var endIndex = 5;
 
     it('should return match history of a summoner', function (done) {
-      api.MatchHistory.getBySummonerId(summonerId, function (error, result) {
+      api.MatchList.getBySummonerId(summonerId, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -22,25 +22,24 @@ describe('api', function () {
     });
 
     it('should return match history of a summoner with matches containing given champions', function (done) {
-      api.MatchHistory.getBySummonerId(summonerId, { championIds: championIds }, function (error, result) {
+      api.MatchList.getBySummonerId(summonerId, { championIds: championIds }, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
         expect(result.matches).to.be.ok;
-        expect(result.matches[0].participants).to.be.ok;
-        expect(championIds).to.include(result.matches[0].participants[0].championId);
+        expect(championIds).to.include(result.matches[0].champion);
         done();
       });
     });
 
     it('should return match history of a summoner with matches played on given queues', function (done) {
-      api.MatchHistory.getBySummonerId(summonerId, { rankedQueues: rankedQueues }, function (error, result) {
+      api.MatchList.getBySummonerId(summonerId, { rankedQueues: rankedQueues }, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
         expect(result.matches).to.be.ok;
-        expect(result.matches[0].queueType).to.be.ok;
-        expect(rankedQueues).to.include(result.matches[0].queueType);
+        expect(result.matches[0].queue).to.be.ok;
+        expect(rankedQueues).to.include(result.matches[0].queue);
         done();
       });
     });
@@ -50,7 +49,7 @@ describe('api', function () {
         beginIndex: beginIndex,
         endIndex: endIndex
       };
-      api.MatchHistory.getBySummonerId(summonerId, options, function (error, result) {
+      api.MatchList.getBySummonerId(summonerId, options, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');
@@ -67,7 +66,7 @@ describe('api', function () {
         beginIndex: beginIndex,
         endIndex: endIndex
       };
-      api.MatchHistory.getBySummonerId(summonerId, options, function (error, result) {
+      api.MatchList.getBySummonerId(summonerId, options, function (error, result) {
         expect(error).to.not.be.ok;
         expect(result).to.be.ok;
         expect(result).to.be.an('object');

@@ -26,15 +26,19 @@ describe('util', function () {
     it('should return featured games 11 times without failure', function (done) {
       var count = 0;
 
-      for (var i = 0; i < 11; i++) {
+      function getFeaturedGames() {
         api.FeaturedGames.get(function (error, result) {
           expect(error).to.not.be.ok;
 
-          if (++count === 11) {
+          if (++count < 11) {
+            getFeaturedGames();
+          } else {
             done();
-          };
+          }
         });
       }
+
+      getFeaturedGames();
     });
 
   });

@@ -87,7 +87,7 @@ describe('api', function () {
 
     it('should return mastery \'Feast\'', function (done) {
       var feast = {
-        id: 4124,
+        id: 6122,
         name: 'Feast'
       };
 

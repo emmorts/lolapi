@@ -1,7 +1,7 @@
 lolapi
 ======
 
-Wrapper of the official League of Legends public API with cache support.
+Wrapper of the official League of Legends public API with integrated cache support.
 
 [![Build Status](https://travis-ci.org/emmorts/lolapi.svg?branch=master)](https://travis-ci.org/emmorts/lolapi)
 
@@ -13,8 +13,6 @@ Quick Start
 -----------
 ```Javascript
 var lolapi = require('lolapi')('my-api-key', 'euw');
-
-lolapi.setRateLimit(10, 500);
 
 var summonerName = 'wickd';
 lolapi.Summoner.getByName(summonerName, function (error, summoner) {
@@ -60,7 +58,7 @@ Most of the API calls have additional available properties covered below.
 - [League.getEntriesByTeamId(teamIds, [options, ]callback)](#leaguegetentriesbyteamidteamids-options-callback)
 - [League.getChallenger(type, [options, ]callback)](#leaguegetchallengertype-options-callback)
 - [Match.get(matchId, [options, ]callback)](#matchgetmatchid-options-callback)
-- [MatchHistory.getBySummonerId(summonerIds, [options, ]callback)](#matchhistorygetbysummoneridsummonerids-options-callback)
+- [MatchList.getBySummonerId(summonerIds, [options, ]callback)](#matchlistgetbysummoneridsummonerids-options-callback)
 - [Static.getChampions([options, ]callback)](#staticgetchampionsoptions-callback)
 - [Static.getChampion(championId, [options, ]callback)](#staticgetchampionchampionid-options-callback)
 - [Static.getItems([options, ]callback)](#staticgetitemsoptions-callback)
@@ -111,10 +109,11 @@ var lolapi = require('lolapi')('my-api-key', 'euw', options);
 // all requests are now being cached with a timeout of 2 hours
 var summonerName = 'wickd';
 lolapi.Summoner.getByName(summonerName, function () {
-  // will take 500ms~
-});
-lolapi.Summoner.getByName(summonerName, function () {
-  // will now take 1-5 ms
+  // calls remote API server, will take 500ms~
+
+  lolapi.Summoner.getByName(summonerName, function () {
+    // takes results from cache, will now take 1-5 ms
+  });
 });
 ```
 
@@ -172,14 +171,17 @@ Get match by match ID.
 Additional `options` properties:
 - **includeTimeline** - if true, will include timeline of the match in the results
 
-#### MatchHistory.getBySummonerId(summonerIds, [options, ]callback)
+#### MatchList.getBySummonerId(summonerIds, [options, ]callback)
 Get match history by summoner ID or array of summoner IDs.
 
 Additional `options` properties:
-- **championIds** - array of champion IDs you want to see in resulting matches
-- **rankedQueues** - array of ranked queues you want to see the results of
-- **beginIndex**
-- **endIndex**
+- **championIds** - array(or comma-separated list) of champion IDs you want to see in resulting matches
+- **rankedQueues** - array(or comma-separated list) of ranked queues you want to see the results of
+- **seasons** - array(or comma-separated list) of seasons to use for fetching games
+- **beginTime** - begin time to use for fetching games specified as epoch milliseconds
+- **endTime** - end time to use for fetching games specified as epoch milliseconds
+- **beginIndex** - begin index to use for fetching games
+- **endIndex** - end index to use for fetching games
 
 Example:
 ```Javascript
@@ -189,7 +191,7 @@ var options = {
   beginIndex: 0,
   endIndex: 10
 }; // these options will return 10 ranked 5v5 games containing champion Thresh
-lolapi.MatchHistory.getBySummonerId(71500, options, function (error, matches) {
+lolapi.MatchList.getBySummonerId(71500, options, function (error, matches) {
   // got the matches!
 });
 ```

@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 describe('api', function () {
 
   describe('#team', function () {
-    var summonerIds = [71500, 19531813];
+    var summonerIds = [71500, 71054];
 
     it('should retrieve summoners teams', function (done) {
       api.Team.getBySummonerId(summonerIds[0], function (error, result) {
