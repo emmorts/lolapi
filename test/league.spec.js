@@ -36,7 +36,14 @@ describe('api', function () {
         done();
       });
     });
-
+    it('should return ranked solo master league', function(done){
+       api.League.getMaster('RANKED_SOLO_5x5', function(error, result){
+          expect(error).to.not.be.ok;
+          expect(result).to.be.ok;
+          expect(result).to.be.an('object');
+          done();
+       });
+    });
   });
 
 });
