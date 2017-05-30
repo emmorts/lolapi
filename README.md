@@ -57,6 +57,7 @@ Most of the API calls have additional available properties covered below.
 - [League.getByTeamId(teamIds, [options, ]callback)](#leaguegetbyteamidteamids-options-callback)
 - [League.getEntriesByTeamId(teamIds, [options, ]callback)](#leaguegetentriesbyteamidteamids-options-callback)
 - [League.getChallenger(type, [options, ]callback)](#leaguegetchallengertype-options-callback)
+- [League.getMaster(type, [options, ]callback)](#leaguegetmastertype-options-callback)
 - [Match.get(matchId, [options, ]callback)](#matchgetmatchid-options-callback)
 - [MatchList.getBySummonerId(summonerIds, [options, ]callback)](#matchlistgetbysummoneridsummonerids-options-callback)
 - [Static.getChampions([options, ]callback)](#staticgetchampionsoptions-callback)
@@ -159,6 +160,14 @@ Get league entries by team ID or array of team IDs.
 
 #### League.getChallenger(type, [options, ]callback)
 Get challenger tier leagues.
+
+Property `type` may contain one of the following values:
+- RANKED_SOLO_5X5
+- RANKED_TEAM_3X3
+- RANKED_TEAM_5X5
+
+#### League.getMaster(type, [options, ]callback)
+Get master tier leagues.
 
 Property `type` may contain one of the following values:
 - RANKED_SOLO_5X5
